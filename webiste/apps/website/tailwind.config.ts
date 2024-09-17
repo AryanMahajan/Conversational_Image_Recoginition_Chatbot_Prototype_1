@@ -9,6 +9,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      width: {
+        custom: '420px',
+      },
       fontFamily: {
         mulish: ['Mulish', 'sans-serif'],
       },

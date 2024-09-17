@@ -1,4 +1,3 @@
-import botLogo from "./assets/1.png"
 
 export const HeroSec = () => {
     return (
@@ -18,9 +17,28 @@ export const HeroSec = () => {
                     <button type="button" className="text-white transition-all duration-200 bg-blue-700 hover:bg-blue-800 font-semibold rounded-lg text-lg px-10 py-4 me-2 mb-2 focus:outline-none">Sign up Free</button>
                 </div>
             </div>
-            <div>
-                <img src={botLogo} alt="Bot " />
+            <div className="flex">
+                <div className="bg-slate-100 hover:bg-slate-200 transition-all duration-200 px-8 pb-8 py-10 w-custom rounded-xl relative mt-10 flex-col items-center">
+                    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 mt-10">
+                        <img src="https://github.com/AryanMahajan/Conversational_Image_Recoginition_Chatbot/raw/main/webiste/packages/ui/src/assets/1.png" className="rounded-full w-24 h-24 object-cover"  alt="Bot " />
+                    </div>
+                    <div className="mt-36 text-5xl font-extrabold text-center">
+                        Standalone AI
+                    </div>
+                    <div className="text-center mt-32 px-4">No dependencies on third-party providers like OpenAI, Google Bard or Bing AI.</div>
+                </div>
+                <div className="bg-slate-100 hover:bg-slate-200 transition-all duration-200 ml-10 px-8 pb-8 py-10 w-custom rounded-xl relative mt-10 flex-col items-center">
+                    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 mt-10">
+                        <img src="https://github.com/AryanMahajan/Conversational_Image_Recoginition_Chatbot/raw/main/webiste/packages/ui/src/assets/1.png" className="rounded-full w-24 h-24 object-cover"  alt="Bot " />
+                    </div>
+                    <div className="mt-36 text-5xl font-extrabold text-center">
+                        Data secured
+                    </div>
+                    <div className="text-center mt-32 px-4">All data is processed and hosted only in the ChatBot platform.</div>
+                </div>
             </div>
+            
+
         </div>
     );
 };

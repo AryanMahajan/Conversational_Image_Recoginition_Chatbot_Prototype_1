@@ -18,7 +18,7 @@ export const HeroSec = () => {
                 </div>
             </div>
             <div className="flex">
-                <div className="bg-slate-100 shadow-xl hover:bg-slate-200 transition-all duration-200 px-8 pb-8 py-10 w-custom rounded-xl relative mt-10 flex-col items-center">
+                <div className="bg-slate-200 shadow-xl hover:bg-slate-200 transition-all duration-200 px-8 pb-8 py-10 w-custom rounded-xl relative mt-10 flex-col items-center">
                     <div className="absolute top-0 left-1/2 transform -translate-x-1/2 mt-10">
                         <img src="https://github.com/AryanMahajan/Conversational_Image_Recoginition_Chatbot/raw/main/webiste/packages/ui/src/assets/1.png" className="rounded-full w-24 h-24 object-cover"  alt="Bot " />
                     </div>
@@ -27,7 +27,7 @@ export const HeroSec = () => {
                     </div>
                     <div className="text-center mt-10 px-4">No dependencies on third-party providers like OpenAI, Google Bard or Bing AI.</div>
                 </div>
-                <div className="bg-slate-100 shadow-xl hover:bg-slate-200 transition-all duration-200 ml-10 px-8 pb-8 py-10 w-custom rounded-xl relative mt-10 flex-col items-center">
+                <div className="bg-slate-200 shadow-xl hover:bg-slate-200 transition-all duration-200 ml-10 px-8 pb-8 py-10 w-custom rounded-xl relative mt-10 flex-col items-center">
                     <div className="absolute top-0 left-1/2 transform -translate-x-1/2 mt-10">
                         <img src="https://github.com/AryanMahajan/Conversational_Image_Recoginition_Chatbot/raw/main/webiste/packages/ui/src/assets/1.png" className="rounded-full w-24 h-24 object-cover"  alt="Bot " />
                     </div>

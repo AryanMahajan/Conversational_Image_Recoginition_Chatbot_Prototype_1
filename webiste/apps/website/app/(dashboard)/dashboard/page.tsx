@@ -1,5 +1,6 @@
-import { Title } from "../../components/Title";
-import { TopBar } from "../../components/TopBar";
+import { Title } from "../../../components/Title";
+import { TopBar } from "../../../components/TopBar";
+
 
 
 

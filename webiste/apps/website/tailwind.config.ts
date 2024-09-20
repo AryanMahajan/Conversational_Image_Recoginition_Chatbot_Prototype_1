@@ -9,6 +9,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'black-gradient': 'linear-gradient(180deg, #000000, #1a1a1a)',
+      },
       width: {
         custom: '420px',
       },

@@ -13,10 +13,10 @@ const InputDiv = () => {
         if (textareaRef.current) {
             textareaRef.current.style.height = 'auto';
             textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
-            // Set a maximum height for the textarea to enable scrolling
-            if (textareaRef.current.scrollHeight > 350) { // 150px max height for example
+
+            if (textareaRef.current.scrollHeight > 350) {
                 textareaRef.current.style.height = '350px';
-                textareaRef.current.style.overflowY = 'auto'; // Enable vertical scrolling
+                textareaRef.current.style.overflowY = 'auto';
             } else {
                 textareaRef.current.style.overflowY = 'hidden';
             }
@@ -30,7 +30,7 @@ const InputDiv = () => {
                 onChange={handleInputChange}
                 value={value}
                 placeholder="Message ChatBot"
-                rows={1} // Minimum rows visible
+                rows={1}
                 className="rounded-xl pl-4 pr-20 bg-zinc-600 py-3 border-none focus:outline-none text-slate-50 w-full resize-none "
                 
             />

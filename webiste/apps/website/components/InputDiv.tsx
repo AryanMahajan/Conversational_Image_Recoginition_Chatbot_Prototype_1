@@ -17,7 +17,7 @@ const InputDiv = () => {
             if (textareaRef.current.scrollHeight > 350) {
                 textareaRef.current.style.height = '350px';
                 textareaRef.current.style.overflowY = 'auto';
-            } else {
+            } else { 
                 textareaRef.current.style.overflowY = 'hidden';
             }
         }

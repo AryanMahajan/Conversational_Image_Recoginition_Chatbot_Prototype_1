@@ -11,7 +11,6 @@ const UploadDropzone = generateUploadDropzone<OurFileRouter>();
 
 export const UploadImage = () => {
     const [images, setImages] = useState<{ fileKey: string; fileName: string }[]>([]);
-
     useEffect(() => {
         if (images.length > 0) {
             console.log("Updated Images State:", images);
@@ -23,7 +22,7 @@ export const UploadImage = () => {
     };
 
     return (
-        <main className="flex flex-col items-center justify-center">
+        <main className="flex flex-col items-center justify-center mt-10">
             {images.length == 0 ? <UploadDropzone className="bg-slate-300 font-bold"
                 endpoint="imageUploader"
                 onClientUploadComplete={(res) => {

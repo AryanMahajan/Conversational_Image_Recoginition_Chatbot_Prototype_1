@@ -1,0 +1,30 @@
+<annotation>
+	<filename>2012_004029.jpg</filename>
+	<folder>VOC2012</folder>
+	<object>
+		<name>person</name>
+		<bndbox>
+			<xmax>284</xmax>
+			<xmin>260</xmin>
+			<ymax>252</ymax>
+			<ymin>202</ymin>
+		</bndbox>
+		<difficult>0</difficult>
+		<pose>Unspecified</pose>
+		<point>
+			<x>271</x>
+			<y>213</y>
+		</point>
+	</object>
+	<segmented>0</segmented>
+	<size>
+		<depth>3</depth>
+		<height>300</height>
+		<width>400</width>
+	</size>
+	<source>
+		<annotation>PASCAL VOC2012</annotation>
+		<database>The VOC2012 Database</database>
+		<image>flickr</image>
+	</source>
+</annotation>

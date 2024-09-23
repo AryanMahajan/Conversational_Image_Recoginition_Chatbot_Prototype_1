@@ -1,0 +1,24 @@
+<annotation>
+	<filename>2011_000460.jpg</filename>
+	<folder>VOC2012</folder>
+	<object>
+		<name>person</name>
+		<bndbox>
+			<xmax>205</xmax>
+			<xmin>61</xmin>
+			<ymax>446</ymax>
+			<ymin>46</ymin>
+		</bndbox>
+	</object>
+	<segmented>0</segmented>
+	<size>
+		<depth>3</depth>
+		<height>500</height>
+		<width>332</width>
+	</size>
+	<source>
+		<annotation>PASCAL VOC2011</annotation>
+		<database>The VOC2011 Database</database>
+		<image>flickr</image>
+	</source>
+</annotation>

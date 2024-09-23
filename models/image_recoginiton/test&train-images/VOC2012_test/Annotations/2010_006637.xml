@@ -1,0 +1,30 @@
+<annotation>
+	<filename>2010_006637.jpg</filename>
+	<folder>VOC2010</folder>
+	<object>
+		<name>person</name>
+		<bndbox>
+			<xmax>275</xmax>
+			<xmin>224</xmin>
+			<ymax>251</ymax>
+			<ymin>145</ymin>
+		</bndbox>
+		<difficult>0</difficult>
+		<pose>Unspecified</pose>
+		<point>
+			<x>247</x>
+			<y>179</y>
+		</point>
+	</object>
+	<segmented>0</segmented>
+	<size>
+		<depth>3</depth>
+		<height>283</height>
+		<width>420</width>
+	</size>
+	<source>
+		<annotation>PASCAL VOC2010</annotation>
+		<database>The VOC2010 Database</database>
+		<image>flickr</image>
+	</source>
+</annotation>

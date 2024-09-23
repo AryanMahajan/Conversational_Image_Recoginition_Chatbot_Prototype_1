@@ -1,0 +1,33 @@
+<annotation>
+	<filename>2011_003032.jpg</filename>
+	<folder>VOC2012</folder>
+	<object>
+		<name>person</name>
+		<bndbox>
+			<xmax>304</xmax>
+			<xmin>106</xmin>
+			<ymax>500</ymax>
+			<ymin>49</ymin>
+		</bndbox>
+	</object>
+	<object>
+		<name>person</name>
+		<bndbox>
+			<xmax>479</xmax>
+			<xmin>270</xmin>
+			<ymax>500</ymax>
+			<ymin>22</ymin>
+		</bndbox>
+	</object>
+	<segmented>0</segmented>
+	<size>
+		<depth>3</depth>
+		<height>500</height>
+		<width>479</width>
+	</size>
+	<source>
+		<annotation>PASCAL VOC2011</annotation>
+		<database>The VOC2011 Database</database>
+		<image>flickr</image>
+	</source>
+</annotation>

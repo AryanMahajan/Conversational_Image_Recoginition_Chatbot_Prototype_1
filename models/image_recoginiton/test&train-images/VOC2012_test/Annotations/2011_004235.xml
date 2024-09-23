@@ -1,0 +1,45 @@
+<annotation>
+	<filename>2011_004235.jpg</filename>
+	<folder>VOC2011</folder>
+	<object>
+		<name>person</name>
+		<bndbox>
+			<xmax>376</xmax>
+			<xmin>93</xmin>
+			<ymax>458</ymax>
+			<ymin>152</ymin>
+		</bndbox>
+		<difficult>0</difficult>
+		<pose>Unspecified</pose>
+		<point>
+			<x>193</x>
+			<y>273</y>
+		</point>
+	</object>
+	<object>
+		<name>person</name>
+		<bndbox>
+			<xmax>347</xmax>
+			<xmin>64</xmin>
+			<ymax>500</ymax>
+			<ymin>50</ymin>
+		</bndbox>
+		<difficult>0</difficult>
+		<pose>Unspecified</pose>
+		<point>
+			<x>226</x>
+			<y>192</y>
+		</point>
+	</object>
+	<segmented>0</segmented>
+	<size>
+		<depth>3</depth>
+		<height>500</height>
+		<width>376</width>
+	</size>
+	<source>
+		<annotation>PASCAL VOC2011</annotation>
+		<database>The VOC2011 Database</database>
+		<image>flickr</image>
+	</source>
+</annotation>

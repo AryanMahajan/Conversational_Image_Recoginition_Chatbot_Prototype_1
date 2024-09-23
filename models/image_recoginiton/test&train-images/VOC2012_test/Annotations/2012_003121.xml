@@ -1,0 +1,45 @@
+<annotation>
+	<filename>2012_003121.jpg</filename>
+	<folder>VOC2012</folder>
+	<object>
+		<name>person</name>
+		<bndbox>
+			<xmax>320</xmax>
+			<xmin>54</xmin>
+			<ymax>240</ymax>
+			<ymin>29</ymin>
+		</bndbox>
+		<difficult>0</difficult>
+		<pose>Unspecified</pose>
+		<point>
+			<x>174</x>
+			<y>194</y>
+		</point>
+	</object>
+	<object>
+		<name>person</name>
+		<bndbox>
+			<xmax>70</xmax>
+			<xmin>1</xmin>
+			<ymax>240</ymax>
+			<ymin>51</ymin>
+		</bndbox>
+		<difficult>0</difficult>
+		<pose>Unspecified</pose>
+		<point>
+			<x>24</x>
+			<y>109</y>
+		</point>
+	</object>
+	<segmented>0</segmented>
+	<size>
+		<depth>3</depth>
+		<height>240</height>
+		<width>320</width>
+	</size>
+	<source>
+		<annotation>PASCAL VOC2012</annotation>
+		<database>The VOC2012 Database</database>
+		<image>flickr</image>
+	</source>
+</annotation>

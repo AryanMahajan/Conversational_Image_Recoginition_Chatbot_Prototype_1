@@ -1,0 +1,51 @@
+<annotation>
+	<filename>2009_003496.jpg</filename>
+	<folder>VOC2012</folder>
+	<object>
+		<name>person</name>
+		<bndbox>
+			<xmax>138</xmax>
+			<xmin>36</xmin>
+			<ymax>336</ymax>
+			<ymin>60</ymin>
+		</bndbox>
+	</object>
+	<object>
+		<name>person</name>
+		<bndbox>
+			<xmax>235</xmax>
+			<xmin>134</xmin>
+			<ymax>350</ymax>
+			<ymin>52</ymin>
+		</bndbox>
+	</object>
+	<object>
+		<name>person</name>
+		<bndbox>
+			<xmax>293</xmax>
+			<xmin>156</xmin>
+			<ymax>360</ymax>
+			<ymin>1</ymin>
+		</bndbox>
+	</object>
+	<object>
+		<name>person</name>
+		<bndbox>
+			<xmax>439</xmax>
+			<xmin>325</xmin>
+			<ymax>360</ymax>
+			<ymin>49</ymin>
+		</bndbox>
+	</object>
+	<segmented>0</segmented>
+	<size>
+		<depth>3</depth>
+		<height>360</height>
+		<width>480</width>
+	</size>
+	<source>
+		<annotation>PASCAL VOC2009</annotation>
+		<database>The VOC2009 Database</database>
+		<image>flickr</image>
+	</source>
+</annotation>

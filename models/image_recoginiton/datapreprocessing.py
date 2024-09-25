@@ -30,7 +30,7 @@ def get_class_from_annotation(img_name,category):
             class_categories.append(name)
     
     except Exception as e:
-        print(f"Error parsing XML for image {img_name}: {e}")
+        print(f"Error parsing XML of object for image {img_name}: {e}")
         return []  # Return an empty list in case of errors
     
     return class_categories
@@ -58,7 +58,7 @@ def get_bbox_coordinates(img_name, category):
 
         return coordinates 
     except Exception as e:
-        print(f"Error parsing XML bbox for image bbox {img_name}: {e}")
+        print(f"Error parsing XML of bbox for image bbox {img_name}: {e}")
         return []  # Return an empty list in case of errors
 
 def create_train_val_dataset():
@@ -73,6 +73,20 @@ def create_train_val_dataset():
             pass
     random.shuffle(training_data)
 
+    x_train = []
+    y_train = []
+    bndbox_coordinates = []
+
+    for imgs_array, labels, bboxs in training_data:
+        x_train.append(imgs_array)
+        y_train.append(labels)
+        bndbox_coordinates.append(bboxs)
+
+    x_train = np.array(x_train).reshape(-1, IMG_SIZE, IMG_SIZE, 1)
+    y_train = np.array(y_train)
+    bndbox_coordinates = np.array(bndbox_coordinates)
+
+    return x_train, y_train, bndbox_coordinates
 
 
 def create_test_dataset():

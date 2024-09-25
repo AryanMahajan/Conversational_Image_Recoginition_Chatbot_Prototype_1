@@ -21,10 +21,20 @@ def dense_layers(inputs):
 
 def final_model(inputs):
     feature_cnn = feature_extractor(inputs)
-    dense_output = dense_layers(inputs)
+    dense_output = dense_layers(feature_cnn)
 
-    classification_output = classifier(inputs)
-    bndbox_coordinate_regression_output = bndbox_coordinate_regression(inputs)
+    classification_output = classifier(dense_output)
+    bndbox_coordinate_regression_output = bndbox_coordinate_regression(dense_output)
 
     model = tf.keras.Model(inputs = inputs, outputs = [classification_output, bndbox_coordinate_regression_output])
     return model
+
+
+def define_compile_model(inputs):
+    model = final_model(inputs)
+    model.compile(optimizer = 'adam', 
+                  loss = {'classification': 'sparse_categorical_crossentropy', 'bounding_box': 'mse'},
+                  metrics = {'classification' : 'accuracy', 'bounding_box' : 'mse'}
+    )
+    return model
+

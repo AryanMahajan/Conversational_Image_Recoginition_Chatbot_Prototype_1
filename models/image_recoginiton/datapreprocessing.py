@@ -50,10 +50,10 @@ def get_bbox_coordinates(img_name, category):
 
         for object in root.findall('object'):
             bbox = object.find('bndbox')
-            xmin = int(bbox.find('xmin').text)
-            ymin = int(bbox.find('ymin').text)
-            xmax = int(bbox.find('xmax').text)
-            ymax = int(bbox.find('ymax').text)
+            xmin = int(round(float(bbox.find('xmin').text),0))
+            ymin = int(round(float(bbox.find('ymin').text),0))
+            xmax = int(round(float(bbox.find('xmax').text),0))
+            ymax = int(round(float(bbox.find('ymax').text),0))
             coordinates.append([xmin, ymin, xmax, ymax])
 
         return coordinates 
@@ -73,27 +73,20 @@ def create_train_val_dataset():
             pass
     random.shuffle(training_data)
 
-    x_train = []
-    y_train = []
-    bndbox_coordinates = []
-
-    for imgs_array, labels, bboxs in training_data:
-        x_train.append(imgs_array)
-        y_train.append(labels)
-        bndbox_coordinates.append(bboxs)
-
-    x_train = np.array(x_train).reshape(-1, IMG_SIZE, IMG_SIZE, 1)
-    y_train = np.array(y_train)
-    bndbox_coordinates = np.array(bndbox_coordinates)
-
-    return x_train, y_train, bndbox_coordinates
-
 
 def create_test_dataset():
     # Define the path to the dataset
     img_path = TEST_IMAGES
+    for img in tqdm(os.listdir(img_path)):
+        try:
+            img_array = cv2.imread(os.path.join(img_path,img) ,cv2.IMREAD_GRAYSCALE)  # convert to array
+            new_array = cv2.resize(img_array, (IMG_SIZE, IMG_SIZE))  # resize to normalize data size
+            training_data.append([new_array, get_class_from_annotation(str(img[:-4]), "train_val"), get_bbox_coordinates(str(img[:-4]), "train_val")])  # add this to our training_data
+        except Exception as e:  # in the interest in keeping the output clean...
+            pass
+    random.shuffle(test_data)
 
-create_train_val_dataset()
+#create_train_val_dataset()
 training_data = pd.DataFrame(training_data)
 
-print(training_data.shape)
+print(training_data)

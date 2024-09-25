@@ -8,6 +8,7 @@ data_store = []
 # GET method to retrieve all items
 @app.route('/items', methods=['GET'])
 def get_items():
+    
     return jsonify("good to go"), 200
 
 # POST method to create a new item

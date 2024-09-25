@@ -57,7 +57,7 @@ def get_bbox_coordinates(img_name, category):
 
         return coordinates 
     except Exception as e:
-        print(f"Error parsing XML for image {img_name}: {e}")
+        print(f"Error parsing XML for image bbox {img_name}: {e}")
         return []  # Return an empty list in case of errors
 
 def create_train_val_dataset():

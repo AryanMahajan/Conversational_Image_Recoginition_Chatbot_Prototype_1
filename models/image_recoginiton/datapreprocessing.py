@@ -6,6 +6,7 @@ import cv2
 from tqdm import tqdm
 import random
 import xml.etree.ElementTree as ET
+import pandas as pd
 
 IMG_SIZE = 100
 training_data = []
@@ -21,7 +22,7 @@ def get_class_from_annotation(img_name,category):
         ann_path = TEST_IMAGES_ANNOTATIONS
 
     try:
-        tree = ET.parse(os.path.join(ann_path, f"{img_name}.xml"))
+        tree = ET.parse(r"{ann}\{img}.xml".format(ann=ann_path, img=img_name))
         root = tree.getroot()
 
         for object in root.findall('object'):
@@ -43,7 +44,7 @@ def get_bbox_coordinates(img_name, category):
         ann_path = TEST_IMAGES_ANNOTATIONS
 
     try:
-        tree = ET.parse(os.path.join(ann_path, f"{img_name}.xml"))
+        tree = ET.parse(r"{ann}\{img}.xml".format(ann=ann_path, img=img_name))
         root = tree.getroot()
         coordinates = []
 
@@ -57,7 +58,7 @@ def get_bbox_coordinates(img_name, category):
 
         return coordinates 
     except Exception as e:
-        print(f"Error parsing XML for image bbox {img_name}: {e}")
+        print(f"Error parsing XML bbox for image bbox {img_name}: {e}")
         return []  # Return an empty list in case of errors
 
 def create_train_val_dataset():
@@ -67,8 +68,7 @@ def create_train_val_dataset():
         try:
             img_array = cv2.imread(os.path.join(img_path,img) ,cv2.IMREAD_GRAYSCALE)  # convert to array
             new_array = cv2.resize(img_array, (IMG_SIZE, IMG_SIZE))  # resize to normalize data size
-            training_data.append([new_array, get_class_from_annotation(img[:-5], "train_val"), get_bbox_coordinates(img[:-5], "train_val")])  # add this to our training_data
-            print(get_class_from_annotation(img[:-5],"train_val"))
+            training_data.append([new_array, get_class_from_annotation(str(img[:-4]), "train_val"), get_bbox_coordinates(str(img[:-4]), "train_val")])  # add this to our training_data
         except Exception as e:  # in the interest in keeping the output clean...
             pass
     random.shuffle(training_data)
@@ -80,3 +80,6 @@ def create_test_dataset():
     img_path = TEST_IMAGES
 
 create_train_val_dataset()
+training_data = pd.DataFrame(training_data)
+
+print(training_data.shape)

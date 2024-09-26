@@ -1,8 +1,5 @@
-import tqdm
 import tensorflow as tf
 from keras_resnet.models import ResNet50
-import numpy as np
-import os
 
 def feature_extractor(inputs):
     
@@ -38,3 +35,7 @@ def define_compile_model(inputs):
     )
     return model
 
+def model_predict(data):
+    model = define_compile_model(data)
+    predictions = model.predict(data)
+    return predictions

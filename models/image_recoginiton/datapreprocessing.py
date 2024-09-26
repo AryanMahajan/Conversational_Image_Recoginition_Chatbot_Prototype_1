@@ -1,6 +1,5 @@
 from directories import *
 
-import numpy as np
 import os
 import cv2
 from tqdm import tqdm
@@ -18,8 +17,10 @@ def get_class_from_annotation(img_name,category):
     categories = ["train_val","test"]
     if category == categories[0]:
         ann_path = TRAIN_IMAGES_ANNOTATIONS
-    else:
+    elif category == categories[1]:
         ann_path = TEST_IMAGES_ANNOTATIONS
+    else:
+        print("Wrong category")
 
     try:
         tree = ET.parse(r"{ann}\{img}.xml".format(ann=ann_path, img=img_name))
@@ -31,7 +32,7 @@ def get_class_from_annotation(img_name,category):
     
     except Exception as e:
         print(f"Error parsing XML of object for image {img_name}: {e}")
-        return []  # Return an empty list in case of errors
+        class_categories.append('')  # Return an empty list in case of errors
     
     return class_categories
 
@@ -40,8 +41,10 @@ def get_bbox_coordinates(img_name, category):
     categories = ["train_val","test"]
     if category == categories[0]:
         ann_path = TRAIN_IMAGES_ANNOTATIONS
-    else:
+    elif category == categories[1]:
         ann_path = TEST_IMAGES_ANNOTATIONS
+    else:
+        print("Wrong category")
 
     try:
         tree = ET.parse(r"{ann}\{img}.xml".format(ann=ann_path, img=img_name))
@@ -59,7 +62,8 @@ def get_bbox_coordinates(img_name, category):
         return coordinates 
     except Exception as e:
         print(f"Error parsing XML of bbox for image bbox {img_name}: {e}")
-        return []  # Return an empty list in case of errors
+        coordinates.append([])
+        return coordinates  # Return an empty list in case of errors
 
 def create_train_val_dataset():
     # Define the path to the dataset
@@ -72,6 +76,7 @@ def create_train_val_dataset():
         except Exception as e:  # in the interest in keeping the output clean...
             pass
     random.shuffle(training_data)
+    return pd.DataFrame(training_data)
 
 
 def create_test_dataset():
@@ -81,12 +86,8 @@ def create_test_dataset():
         try:
             img_array = cv2.imread(os.path.join(img_path,img) ,cv2.IMREAD_GRAYSCALE)  # convert to array
             new_array = cv2.resize(img_array, (IMG_SIZE, IMG_SIZE))  # resize to normalize data size
-            training_data.append([new_array, get_class_from_annotation(str(img[:-4]), "train_val"), get_bbox_coordinates(str(img[:-4]), "train_val")])  # add this to our training_data
+            test_data.append([new_array, get_class_from_annotation(str(img[:-4]), "test"), get_bbox_coordinates(str(img[:-4]), "test")])  # add this to our training_data
         except Exception as e:  # in the interest in keeping the output clean...
             pass
     random.shuffle(test_data)
-
-#create_train_val_dataset()
-training_data = pd.DataFrame(training_data)
-
-print(training_data)
+    return pd.DataFrame(test_data)

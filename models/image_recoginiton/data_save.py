@@ -1,23 +1,25 @@
 from datapreprocessing import *
-import numpy as np
 
 train_data = create_train_val_dataset()
 test_data = create_test_dataset()
 
-x_train = np.array()
-x_test = np.array()
-y_train = np.array()
-y_test = np.array()
+x_train = []
+x_test = []
+y_train = []
+y_test = []
 
-for d in train_data:
-    np.append(x_train, d[0])
-    np.append(y_train, [d[1],d[2]])
+def create_train_data():
+    for x in train_data[0]:
+        x_train.append(x)
+    for y in train_data[1]:
+        y_train.append(y)
 
-for d in test_data:
-    np.append(x_test, d[0])
-    np.append(y_test, [d[1],d[2]])
+    return x_train, y_train
 
-np.save('X_train.npy', x_train)
-np.save('y_train.npy', y_train)
-np.save('X_test.npy', x_test)
-np.save('y_test.npy', y_test)
+def create_test_data():
+    for x in test_data:
+        x_test.append(x)
+    for y in test_data:
+        y_test.append(y)
+
+    return x_test, y_test

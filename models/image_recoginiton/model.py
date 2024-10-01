@@ -34,8 +34,3 @@ def define_compile_model(inputs):
                   metrics = {'classification' : 'accuracy', 'bounding_box' : 'mse'}
     )
     return model
-
-def model_predict(data):
-    model = define_compile_model(data)
-    predictions = model.predict(data)
-    return predictions

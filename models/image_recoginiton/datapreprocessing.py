@@ -91,14 +91,3 @@ def create_test_dataset():
             pass
     random.shuffle(test_data)
     return pd.DataFrame(test_data)
-
-def split(dataframe):
-    df = dataframe
-    X = []
-    classes = []
-    bndbox_coordinates = []
-    df[0] = X
-    df[1] = classes
-    df[2] = bndbox_coordinates
-    Y = [classes, bndbox_coordinates]
-    return X , Y

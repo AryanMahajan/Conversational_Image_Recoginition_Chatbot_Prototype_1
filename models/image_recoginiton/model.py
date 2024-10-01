@@ -1,9 +1,8 @@
 import tensorflow as tf
-from keras_resnet.models import ResNet50
 
 def feature_extractor(inputs):
     
-    return ResNet50(input_shape = (100, 100, 3), include_top = False, weights = 'imagenet')(inputs)
+    return tf.keras.applications.resnet.ResNet50(input_shape = (100, 100, 3), include_top = False, weights = 'imagenet')(inputs)
 
 def bndbox_coordinate_regression(inputs):
     return tf.keras.layers.Dense(4, name = 'bounding_box')(inputs)

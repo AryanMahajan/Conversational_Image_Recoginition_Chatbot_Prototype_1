@@ -9,31 +9,30 @@ base_model.trainable = False
 NUM_FILTERS = 512
 
 def classification_model():
-    class_model = tf.keras.Sequential(
-        base_model,
-        tf.keras.layers.Conv2D(NUM_FILTERS,(3,3),padding='same', kernel_initializer='he_normal'),
-        tf.keras.layers.BatchNormalization(),
-        tf.keras.layers.LeakyReLU(alpha=0.1),
+    class_model = tf.keras.Sequential()
+    class_model.add(base_model)
+    class_model.add(tf.keras.layers.Conv2D(NUM_FILTERS,(3,3),padding='same', kernel_initializer='he_normal'))
+    class_model.add(tf.keras.layers.BatchNormalization())
+    class_model.add(tf.keras.layers.LeakyReLU(alpha=0.1))
 
-        tf.keras.layers.Conv2D(NUM_FILTERS,(3,3),padding='same', kernel_initializer='he_normal'),
-        tf.keras.layers.BatchNormalization(),
-        tf.keras.layers.LeakyReLU(alpha=0.1),
+    class_model.add(tf.keras.layers.Conv2D(NUM_FILTERS,(3,3),padding='same', kernel_initializer='he_normal'))
+    class_model.add(tf.keras.layers.BatchNormalization())
+    class_model.add(tf.keras.layers.LeakyReLU(alpha=0.1))
 
-        tf.keras.layers.Conv2D(NUM_FILTERS,(3,3),padding='same', kernel_initializer='he_normal'),
-        tf.keras.layers.BatchNormalization(),
-        tf.keras.layers.LeakyReLU(alpha=0.1),
+    class_model.add(tf.keras.layers.Conv2D(NUM_FILTERS,(3,3),padding='same', kernel_initializer='he_normal'))
+    class_model.add(tf.keras.layers.BatchNormalization())
+    class_model.add(tf.keras.layers.LeakyReLU(alpha=0.1))
 
-        tf.keras.layers.Flatten(),
+    class_model.add(tf.keras.layers.Flatten())
 
-        tf.keras.layers.Dense(NUM_FILTERS,kernel_initializer='he_normal'),
-        tf.keras.layers.BatchNormalization(),
-        tf.keras.layers.LeakyReLU(alpha=0.1),
+    class_model.add(tf.keras.layers.Dense(NUM_FILTERS,kernel_initializer='he_normal'))
+    class_model.add(tf.keras.layers.BatchNormalization())
+    class_model.add(tf.keras.layers.LeakyReLU(alpha=0.1))
 
-        tf.keras.layers.Dense(20, activation = 'sigmoid')
-    )
+    class_model.add(tf.keras.layers.Dense(20, activation = 'sigmoid'))
 
-    class_model.compile(optimizer = tf.keras.optimizers.Adam(learning_rate = 0.001), loss = 'sparse_categorical_crossentropy')
+    class_model.compile(optimizer = tf.keras.optimizers.Adam(learning_rate = 0.001), loss = 'sparse_categorical_crossentropy', metrics=["accuracy"])
 
-    class_model.fit(x_train, y_train, epochs = 20, validation_split = 0.2)
+    class_model.fit(x_train, y_train, batch_size = 32, epochs = 20, validation_split = 0.2)
 
     return class_model

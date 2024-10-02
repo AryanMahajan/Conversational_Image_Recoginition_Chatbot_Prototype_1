@@ -4,7 +4,7 @@ def feature_extractor(inputs):
     return tf.keras.applications.resnet.ResNet50(input_shape=(224, 224, 3), include_top=False, weights='imagenet')(inputs)
 
 def bndbox_coordinate_regression(inputs):
-    return tf.keras.layers.Dense(4, name='bounding_box')(inputs)
+    return tf.keras.layers.Dense(4, activation='linear', name='bounding_box')(inputs)
 
 def classifier(inputs):
     return tf.keras.layers.Dense(20, activation='softmax', name='classification')(inputs)
@@ -12,7 +12,7 @@ def classifier(inputs):
 def dense_layers(inputs):
     x = tf.keras.layers.Flatten()(inputs)
     x = tf.keras.layers.Dense(128, activation='relu')(x)
-    x = tf.keras.layers.Dropout(0.2)(x)  # Add dropout for regularization
+    x = tf.keras.layers.Dropout(0.2)(x)
     return x
 
 def final_model(inputs):
@@ -25,10 +25,9 @@ def final_model(inputs):
     model = tf.keras.Model(inputs=inputs, outputs=[classification_output, bndbox_coordinate_regression_output])
     return model
 
-
 def define_compile_model(inputs):
     model = final_model(inputs)
-    model.compile(optimizer='adam',
+    model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
                   loss={'classification': 'sparse_categorical_crossentropy', 'bounding_box': 'mse'},
                   metrics={'classification': 'accuracy', 'bounding_box': 'mse'})
     return model

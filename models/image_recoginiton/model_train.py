@@ -15,4 +15,6 @@ def train():
   model = define_compile_model(tf.keras.layers.Input(shape=input_shape))
   model.fit(X_train, y_train, epochs=10, validation_split=0.2)
 
+  model.save('model.keras')
+
   return model

@@ -10,7 +10,7 @@ import pandas as pd
 IMG_SIZE = 224
 training_data = []
 test_data = []
-
+CLASSES=['aeroplane','bicycle','bird','boat','bottle','bus','car','cat','chair','cow','diningtable','dog','horse','motorbike','person','pottedplant','sheep','sofa','train','tvmonitor']
 
 def get_class_from_annotation(img_name,category):
     class_categories = []
@@ -28,7 +28,8 @@ def get_class_from_annotation(img_name,category):
 
         for object in root.findall('object'):
             name = object.find('name').text
-            class_categories.append(name)
+            num = CLASSES.index(name)
+            class_categories.append(num)
     
     except Exception as e:
         print(f"Error parsing XML of object for image {img_name}: {e}")

@@ -73,7 +73,7 @@ def create_train_val_dataset():
         try:
             img_array = cv2.imread(os.path.join(img_path,img))  # convert to array
             new_array = cv2.resize(img_array, (IMG_SIZE, IMG_SIZE))  # resize to normalize data size
-            training_data.append([new_array, [get_class_from_annotation(str(img[:-4]), "train_val"), get_bbox_coordinates(str(img[:-4]), "train_val")]])  # add this to our training_data
+            training_data.append([new_array, get_class_from_annotation(str(img[:-4]), "train_val"), get_bbox_coordinates(str(img[:-4]), "train_val")])  # add this to our training_data
         except Exception as e:  # in the interest in keeping the output clean...
             pass
     random.shuffle(training_data)
@@ -87,7 +87,7 @@ def create_test_dataset():
         try:
             img_array = cv2.imread(os.path.join(img_path,img))  # convert to array
             new_array = cv2.resize(img_array, (IMG_SIZE, IMG_SIZE))  # resize to normalize data size
-            test_data.append([new_array, [get_class_from_annotation(str(img[:-4]), "test"), get_bbox_coordinates(str(img[:-4]), "test")]])  # add this to our training_data
+            test_data.append([new_array, get_class_from_annotation(str(img[:-4]), "test"), get_bbox_coordinates(str(img[:-4]), "test")])  # add this to our training_data
         except Exception as e:  # in the interest in keeping the output clean...
             pass
     random.shuffle(test_data)

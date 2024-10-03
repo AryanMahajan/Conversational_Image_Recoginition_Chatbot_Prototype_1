@@ -8,5 +8,8 @@ def bndbox_regression():
     bbox_model = tf.keras.Sequential()
     bbox_model.add(tf.keras.layers.Dense(4, activation='linear'))
     bbox_model.compile(optimizer = tf.keras.optimizers.Adam(learning_rate = 0.001), loss = 'mse')
-    bbox_model.fit(x_train, bbox_train,batch_size = 32, epochs = 20, validation_split = 0.2)
-    return bbox_model
+    history = bbox_model.fit(x_train, bbox_train,batch_size = 32, epochs = 20)
+    return bbox_model,history
+
+model,history = bndbox_regression()
+print(history)

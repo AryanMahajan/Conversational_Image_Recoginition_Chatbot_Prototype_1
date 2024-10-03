@@ -71,7 +71,7 @@ def create_train_val_dataset():
     img_path = TRAIN_IMAGES
     for img in tqdm(os.listdir(img_path)):
         try:
-            img_array = cv2.imread(os.path.join(img_path,img))  # convert to array
+            img_array = cv2.imread(os.path.join(img_path,img), cv2.IMREAD_GRAYSCALE)  # convert to array
             new_array = cv2.resize(img_array, (IMG_SIZE, IMG_SIZE))  # resize to normalize data size
             training_data.append([new_array, get_class_from_annotation(str(img[:-4]), "train_val"), get_bbox_coordinates(str(img[:-4]), "train_val")])  # add this to our training_data
         except Exception as e:  # in the interest in keeping the output clean...
@@ -85,7 +85,7 @@ def create_test_dataset():
     img_path = TEST_IMAGES
     for img in tqdm(os.listdir(img_path)):
         try:
-            img_array = cv2.imread(os.path.join(img_path,img))  # convert to array
+            img_array = cv2.imread(os.path.join(img_path,img), cv2.IMREAD_GRAYSCALE)  # convert to array
             new_array = cv2.resize(img_array, (IMG_SIZE, IMG_SIZE))  # resize to normalize data size
             test_data.append([new_array, get_class_from_annotation(str(img[:-4]), "test"), get_bbox_coordinates(str(img[:-4]), "test")])  # add this to our training_data
         except Exception as e:  # in the interest in keeping the output clean...

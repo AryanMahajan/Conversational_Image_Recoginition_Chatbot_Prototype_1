@@ -4,7 +4,7 @@ from data_save import create_train_data
 
 x_train, y_train, _ = create_train_data()
 
-base_model = tf.keras.applications.resnet.ResNet50(input_shape=(224, 224, 3), include_top=False, weights='imagenet')
+base_model = tf.keras.applications.resnet.ResNet50(input_shape=(224, 224, 1), include_top=False, weights='imagenet')
 base_model.trainable = False
 NUM_FILTERS = 512
 
